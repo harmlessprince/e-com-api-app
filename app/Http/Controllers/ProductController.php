@@ -6,6 +6,7 @@ use App\Http\Requests\ProductRequest;
 use App\Http\Resources\ProductCollection;
 use App\Http\Resources\ProductResource;
 use App\Product;
+use Illuminate\Http\Client\Response;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -136,6 +137,12 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return response([
+            "message"  => "Product Deleted",
+        ], 204);
+
+
     }
 }
